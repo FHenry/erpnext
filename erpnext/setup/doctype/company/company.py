@@ -243,6 +243,10 @@ class Company(NestedSet):
 				income_account = frappe.db.get_value("Account",
 					{"account_name": _("Sales Account"), "company": self.name})
 
+			if not income_account:
+				income_account = frappe.db.get_value("Account",
+					{"account_type": "Income Account", "company": self.name, "is_group": 0})
+
 			self.db_set("default_income_account", income_account)
 
 		if not self.default_payable_account:
