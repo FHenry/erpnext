@@ -1082,49 +1082,38 @@
                 "account_number": "34"
             },
             "Stocks de produits": {
-                "account_type": "Stock",
                 "Produits interm\u00e9diaires": {
-                    "account_type": "Stock",
                     "Produits interm\u00e9diaires (ou groupe) A": {
-                        "account_type": "Stock",
                         "is_group": 1,
                         "account_number": "3511"
                     },
                     "Produits interm\u00e9diaires (ou groupe) B": {
-                        "account_type": "Stock",
                         "is_group": 1,
                         "account_number": "3512"
                     },
                     "account_number": "351"
                 },
                 "Produits finis": {
-                    "account_type": "Stock",
                     "Produits finis (ou groupe) A": {
-                        "account_type": "Stock",
                         "is_group": 1,
                         "account_number": "3551"
                     },
                     "Produits finis (ou groupe) B": {
-                        "account_type": "Stock",
                         "is_group": 1,
                         "account_number": "3552"
                     },
                     "account_number": "355"
                 },
                 "Produits r\u00e9siduels (ou mati\u00e8res de r\u00e9cup\u00e9ration)": {
-                    "account_type": "Stock",
                     "D\u00e9chets": {
-                        "account_type": "Stock",
                         "is_group": 1,
                         "account_number": "3581"
                     },
                     "Rebuts": {
-                        "account_type": "Stock",
                         "is_group": 1,
                         "account_number": "3585"
                     },
                     "Mati\u00e8res de r\u00e9cup\u00e9ration": {
-                        "account_type": "Stock",
                         "is_group": 1,
                         "account_number": "3586"
                     },
@@ -1145,8 +1134,8 @@
                 "account_number": "37"
             },
             "Stocks en voie d'acheminement, mis en d\u00e9p\u00f4t ou donn\u00e9s en consignation (en cas d'inventaire permanent en comptabilit\u00e9 g\u00e9n\u00e9rale)": {
-                "account_type": "Stock",
-                "account_number": "38"
+                "account_number": "38",
+                "account_type": "Stock"
             },
             "D\u00e9pr\u00e9ciations des stocks et en-cours": {
                 "D\u00e9pr\u00e9ciations des mati\u00e8res premi\u00e8res (et fournitures)": {
@@ -1241,37 +1230,28 @@
             "41-Clients et comptes rattach\u00e9s (ACTIF)": {
                 "account_type": "Receivable",
                 "Clients et Comptes rattach\u00e9s": {
-                    "account_type": "Receivable",
                     "account_number": "410"
                 },
                 "Clients": {
-                    "account_type": "Receivable",
                     "Clients - Ventes de biens ou de prestations de services": {
-                        "account_type": "Receivable",
                         "account_number": "4111"
                     },
                     "Clients - Retenues de garantie": {
-                        "account_type": "Receivable",
                         "account_number": "4117"
                     },
                     "account_number": "411"
                 },
                 "Clients - Effets \u00e0 recevoir": {
-                    "account_type": "Receivable",
                     "account_number": "413"
                 },
                 "Clients douteux ou litigieux": {
-                    "account_type": "Receivable",
                     "account_number": "416"
                 },
                 "Clients - Produits non encore factur\u00e9s": {
-                    "account_type": "Receivable",
                     "Clients - Factures \u00e0 \u00e9tablir": {
-                        "account_type": "Receivable",
                         "account_number": "4181"
                     },
                     "Clients - Int\u00e9r\u00eats courus": {
-                        "account_type": "Receivable",
                         "account_number": "4188"
                     },
                     "account_number": "418"
@@ -1472,37 +1452,29 @@
         "4-Comptes de Tiers (PASSIF)": {
             "root_type": "Liability",
             "40-Fournisseurs et Comptes Rattach\u00e9s (PASSIF)": {
-                "account_type": "Payable",
                 "Fournisseurs": {
-                    "account_type": "Payable",
                     "Fournisseurs - Achats de biens ou de prestations de services": {
                         "account_type": "Payable",
                         "account_number": "4011"
                     },
                     "Fournisseurs - Retenues de garantie": {
-                        "account_type": "Payable",
                         "account_number": "4017"
                     },
                     "account_number": "401"
                 },
                 "Fournisseurs - Effets \u00e0 payer": {
-                    "account_type": "Payable",
                     "account_number": "403"
                 },
                 "Fournisseurs d'immobilisations": {
-                    "account_type": "Payable",
                     "Fournisseurs - Achats d'immobilisations": {
-                        "account_type": "Payable",
                         "account_number": "4041"
                     },
                     "Fournisseurs d'immobilisations - Retenues de garantie": {
-                        "account_type": "Payable",
                         "account_number": "4047"
                     },
                     "account_number": "404"
                 },
                 "Fournisseurs d'immobilisations - Effets \u00e0 payer": {
-                    "account_type": "Payable",
                     "account_number": "405"
                 },
                 "Fournisseurs - Factures non parvenues": {
@@ -1809,13 +1781,11 @@
                     "account_number": "511"
                 },
                 "Banques": {
-                    "account_type": "Bank",
                     "Comptes en monnaie nationale": {
                         "account_type": "Bank",
                         "account_number": "5121"
                     },
                     "Comptes en devises": {
-                        "account_type": "Bank",
                         "account_number": "5124"
                     },
                     "account_number": "512"
@@ -1860,25 +1830,20 @@
                 "account_number": "52"
             },
             "Caisse": {
-                "account_type": "Cash",
                 "Caisse si\u00e8ge social": {
-                    "account_type": "Cash",
                     "Caisse en monnaie nationale": {
-                        "account_type": "Cash",
                         "account_number": "5311"
                     },
                     "Caisse en devises": {
-                        "account_type": "Cash",
                         "account_number": "5314"
                     },
-                    "account_number": "531"
+                    "account_number": "531",
+                    "account_type": "Cash"
                 },
                 "Caisse succursale (ou usine) A": {
-                    "account_type": "Cash",
                     "account_number": "532"
                 },
                 "Caisse succursale (ou usine) B": {
-                    "account_type": "Cash",
                     "account_number": "533"
                 },
                 "account_number": "53"
@@ -1989,43 +1954,33 @@
                 "Variations des stocks (approvisionnements et marchandises)": {
                     "account_type": "Stock Adjustment",
                     "Variation des stocks de mati\u00e8res premi\u00e8res (et fournitures)": {
-                        "account_type": "Stock Adjustment",
                         "account_number": "6031"
                     },
                     "Variation des stocks des autres approvisionnements": {
-                        "account_type": "Stock Adjustment",
                         "account_number": "6032"
                     },
                     "Variation des stocks de marchandises": {
-                        "account_type": "Stock Adjustment",
                         "account_number": "6037"
                     },
                     "account_number": "603"
                 },
                 "Achats d'\u00e9tudes et prestations de service": {
-                    "account_type": "Cost of Goods Sold",
                     "account_number": "604"
                 },
                 "Achats de mat\u00e9riel, \u00e9quipements et travaux": {
-                    "account_type": "Cost of Goods Sold",
                     "account_number": "605"
                 },
                 "Achats non stock\u00e9s de mati\u00e8res et founitures": {
-                    "account_type": "Cost of Goods Sold",
                     "Fournitures non stockables (eau, \u00e9nergie...)": {
-                        "account_type": "Cost of Goods Sold",
                         "account_number": "6061"
                     },
                     "Fournitures d'entretien et de petit \u00e9quipement": {
-                        "account_type": "Cost of Goods Sold",
                         "account_number": "6063"
                     },
                     "Fournitures administratives": {
-                        "account_type": "Cost of Goods Sold",
                         "account_number": "6064"
                     },
                     "Autres mati\u00e8res et fournitures": {
-                        "account_type": "Cost of Goods Sold",
                         "account_number": "6068"
                     },
                     "account_number": "606"
@@ -2033,11 +1988,9 @@
                 "Achats de marchandises": {
                     "account_type": "Cost of Goods Sold",
                     "Marchandises (ou groupe) A": {
-                        "account_type": "Cost of Goods Sold",
                         "account_number": "6071"
                     },
                     "Marchandises (ou groupe) B": {
-                        "account_type": "Cost of Goods Sold",
                         "account_number": "6072"
                     },
                     "account_number": "607"
@@ -2469,7 +2422,8 @@
                     "account_number": "656"
                 },
                 "Charges diverses de gestion courante": {
-                    "account_number": "658"
+                    "account_number": "658",
+                    "account_type": "Round Off"
                 },
                 "account_number": "65"
             },
@@ -2514,7 +2468,6 @@
                     "account_number": "665"
                 },
                 "Pertes de change financi\u00e8res": {
-                    "account_type": "Round Off",
                     "account_number": "666"
                 },
                 "Charges nettes sur cessions de valeurs mobili\u00e8res de placement": {
@@ -2766,7 +2719,8 @@
                     "Travaux de cat\u00e9gorie (ou activit\u00e9) B": {
                         "account_number": "7042"
                     },
-                    "account_number": "704"
+                    "account_number": "704",
+                    "account_type": "Income Account"
                 },
                 "Etudes": {
                     "account_number": "705"
@@ -2968,7 +2922,6 @@
                     "account_number": "765"
                 },
                 "Gains de change financi\u00e8res": {
-                    "account_type": "Round Off",
                     "account_number": "766"
                 },
                 "Produits nets sur cessions de valeurs mobili\u00e8res de placement": {
