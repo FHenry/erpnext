@@ -748,8 +748,15 @@ erpnext.utils.map_current_doc = function(opts) {
 				}
 				d.dialog.hide();
 				_map();
+				if (opts.callback) {
+					console.log('apresmap');
+					console.log(opts.callback);
+					opts.callback();
+				}
 			},
 		});
+
+
 
 		return d;
 	}
@@ -757,6 +764,11 @@ erpnext.utils.map_current_doc = function(opts) {
 	if (opts.source_name) {
 		opts.source_name = [opts.source_name];
 		_map();
+		if (opts.callback) {
+			console.log('apresmapbis');
+			console.log(opts.callback);
+			opts.callback();
+		}
 	}
 }
 

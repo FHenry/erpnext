@@ -1572,20 +1572,22 @@ erpnext.TransactionController = class TransactionController extends erpnext.taxe
 	}
 
 	apply_price_list(item, reset_plc_conversion) {
+		console.log('lunchbdiule');
 		// We need to reset plc_conversion_rate sometimes because the call to
 		// `erpnext.stock.get_item_details.apply_price_list` is sensitive to its value
 		if (!reset_plc_conversion) {
 			this.frm.set_value("plc_conversion_rate", "");
 		}
-
+		console.log('lunchbdiul1e');
 		var me = this;
 		var args = this._get_args(item);
 		if (!((args.items && args.items.length) || args.price_list)) {
 			return;
 		}
-
+		console.log('lunchbdiul2e');
 		if (me.in_apply_price_list == true) return;
 
+		console.log('lunchbdiul3e');
 		me.in_apply_price_list = true;
 		return this.frm.call({
 			method: "erpnext.stock.get_item_details.apply_price_list",
