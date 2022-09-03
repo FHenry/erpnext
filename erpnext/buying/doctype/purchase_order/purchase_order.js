@@ -284,14 +284,19 @@ erpnext.buying.PurchaseOrderController = class PurchaseOrderController extends e
 				supplier: me.frm.doc.supplier
 			},
 			get_query_method: "erpnext.stock.doctype.material_request.material_request.get_material_requests_based_on_supplier",
-			callback : function(){
-				let current_price_list = me.frm.doc.buying_price_list;
-				me.frm.set_value('buying_price_list','');
-				me.frm.doc.items.refresh();
-				me.frm.set_value('buying_price_list', current_price_list);
-				me.frm.doc.items.refresh();
-				console.log('here');
-			}
+			// callback : function(){
+			// 	let current_price_list = me.frm.doc.buying_price_list;
+			// 	// me.frm.set_value('buying_price_list','');
+			// 	// me.frm.doc.items.grid.refresh();
+			// 	//me.frm.set_value('buying_price_list', me.frm.doc.buying_price_list);
+			// 	console.log('toto');
+			// 	console.log(me);
+			// 	//console.log(me.frm.doc.items);
+			// 	//me.apply_price_list(frappe.get_doc(me.frm.doc.items, 'Item'));
+			// 	// console.log('here');
+			// },
+			//callback: 'apply_price_list',
+			//caller: me
 		});
 	}
 

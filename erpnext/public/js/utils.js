@@ -667,6 +667,8 @@ erpnext.utils.map_current_doc = function(opts) {
 				});
 			});
 
+
+
 			if(already_set) {
 				opts.source_name.forEach(function(src) {
 					frappe.model.with_doc(opts.source_doctype, src, function(r) {
@@ -701,10 +703,13 @@ erpnext.utils.map_current_doc = function(opts) {
 				"args": opts.args
 			},
 			callback: function(r) {
+				console.log('et là');
+				console.log(r.message);
 				if(!r.exc) {
-					var doc = frappe.model.sync(r.message);
+					let doc = frappe.model.sync(r.message);
 					cur_frm.dirty();
 					cur_frm.refresh();
+					console.log(doc);
 				}
 			}
 		});
@@ -748,10 +753,9 @@ erpnext.utils.map_current_doc = function(opts) {
 				}
 				d.dialog.hide();
 				_map();
-				if (opts.callback) {
-					console.log('apresmap');
-					console.log(opts.callback);
-					opts.callback();
+				if (opts.caller && opts.callback) {
+
+					opts.caller.apply_price_list();
 				}
 			},
 		});
