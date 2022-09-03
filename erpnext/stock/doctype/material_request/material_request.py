@@ -497,7 +497,8 @@ def make_purchase_order_based_on_supplier(source_name, target_doc=None, args=Non
 		"buying_price_list": target_doc.buying_price_list,
 		"ignore_pricing_rule": target_doc.ignore_pricing_rule,
 	}
-	target_doc = apply_price_list(args_apply_price_from_pricelist, as_doc=True)
+	purhcase_order_new_price = apply_price_list(args_apply_price_from_pricelist, as_doc=True)
+
 	print("toto")
 	print(target_doc)
 

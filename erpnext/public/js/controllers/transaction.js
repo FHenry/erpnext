@@ -1577,11 +1577,13 @@ erpnext.TransactionController = class TransactionController extends erpnext.taxe
 		if (!reset_plc_conversion) {
 			this.frm.set_value("plc_conversion_rate", "");
 		}
+
 		var me = this;
 		var args = this._get_args(item);
 		if (!((args.items && args.items.length) || args.price_list)) {
 			return;
 		}
+
 		if (me.in_apply_price_list == true) return;
 
 		me.in_apply_price_list = true;

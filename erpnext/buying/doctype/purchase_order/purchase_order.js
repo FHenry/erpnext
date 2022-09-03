@@ -267,36 +267,22 @@ erpnext.buying.PurchaseOrderController = class PurchaseOrderController extends e
 	}
 
 	get_items_from_open_material_requests() {
-		let me = this;
 		erpnext.utils.map_current_doc({
 			method: "erpnext.stock.doctype.material_request.material_request.make_purchase_order_based_on_supplier",
 			args: {
-				supplier: me.frm.doc.supplier
+				supplier: this.frm.doc.supplier
 			},
 			source_doctype: "Material Request",
-			source_name: me.frm.doc.supplier,
-			target: me.frm,
+			source_name: this.frm.doc.supplier,
+			target: this.frm,
 			setters: {
 				company: me.frm.doc.company
 			},
 			get_query_filters: {
 				docstatus: ["!=", 2],
-				supplier: me.frm.doc.supplier
+				supplier: this.frm.doc.supplier
 			},
-			get_query_method: "erpnext.stock.doctype.material_request.material_request.get_material_requests_based_on_supplier",
-			// callback : function(){
-			// 	let current_price_list = me.frm.doc.buying_price_list;
-			// 	// me.frm.set_value('buying_price_list','');
-			// 	// me.frm.doc.items.grid.refresh();
-			// 	//me.frm.set_value('buying_price_list', me.frm.doc.buying_price_list);
-			// 	console.log('toto');
-			// 	console.log(me);
-			// 	//console.log(me.frm.doc.items);
-			// 	//me.apply_price_list(frappe.get_doc(me.frm.doc.items, 'Item'));
-			// 	// console.log('here');
-			// },
-			//callback: 'apply_price_list',
-			//caller: me
+			get_query_method: "erpnext.stock.doctype.material_request.material_request.get_material_requests_based_on_supplier"
 		});
 	}
 
