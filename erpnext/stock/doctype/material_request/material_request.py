@@ -16,7 +16,6 @@ from erpnext.buying.utils import check_on_hold_or_closed_status, validate_for_it
 from erpnext.controllers.buying_controller import BuyingController
 from erpnext.manufacturing.doctype.work_order.work_order import get_item_details
 from erpnext.stock.doctype.item.item import get_item_defaults
-from erpnext.stock.get_item_details import apply_price_list
 from erpnext.stock.stock_balance import get_indented_qty, update_bin_qty
 
 form_grid_templates = {"items": "templates/form_grid/material_request_grid.html"}
@@ -421,7 +420,6 @@ def make_request_for_quotation(source_name, target_doc=None):
 
 @frappe.whitelist()
 def make_purchase_order_based_on_supplier(source_name, target_doc=None, args=None):
-
 	mr = source_name
 
 	supplier_items = get_items_based_on_default_supplier(args.get("supplier"))
@@ -461,46 +459,6 @@ def make_purchase_order_based_on_supplier(source_name, target_doc=None, args=Non
 		target_doc,
 		postprocess,
 	)
-
-	args_item = []
-	for d in target_doc.get("items"):
-		args_item.append(
-			{
-				"doctype": d.doctype,
-				"name": d.name,
-				"child_docname": d.name,
-				"item_code": d.item_code,
-				"item_group": d.item_group,
-				"brand": d.brand,
-				"qty": d.qty,
-				"stock_qty": d.stock_qty,
-				"uom": d.uom,
-				"stock_uom": d.stock_uom,
-				"parenttype": d.parenttype,
-				"parent": d.parent,
-				"pricing_rules": d.pricing_rules,
-				"warehouse": d.warehouse,
-				"price_list_rate": d.price_list_rate,
-				"conversion_factor": d.conversion_factor or 1.0,
-			}
-		)
-
-	args_apply_price_from_pricelist = {
-		"doctype": target_doc.doctype,
-		"name": target_doc.name,
-		"items": args_item,
-		"price_list_currency": target_doc.price_list_currency,
-		"plc_conversion_rate": target_doc.plc_conversion_rate,
-		"supplier": target_doc.supplier,
-		"transaction_date": target_doc.transaction_date,
-		"conversion_rate": target_doc.conversion_rate,
-		"buying_price_list": target_doc.buying_price_list,
-		"ignore_pricing_rule": target_doc.ignore_pricing_rule,
-	}
-	purhcase_order_new_price = apply_price_list(args_apply_price_from_pricelist, as_doc=True)
-
-	print("toto")
-	print(target_doc)
 
 	return target_doc
 
