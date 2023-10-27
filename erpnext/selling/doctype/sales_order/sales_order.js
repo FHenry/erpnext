@@ -439,6 +439,12 @@ frappe.ui.form.on("Sales Order Item", {
 		} else {
 			frm.script_manager.copy_from_first_row("items", row, ["delivery_date"]);
 		}
+		if (!frm.doc.reserve_stock) {
+			console.log(row,frm);
+			row.reserve_stock = frm.doc.reserve_stock;
+			row.set_df_property("reserve_stock", "hidden", 1);
+			refresh_field("reserve_stock", cdn, "items");
+		}
 	},
 	delivery_date: function(frm, cdt, cdn) {
 		if(!frm.doc.delivery_date) {
