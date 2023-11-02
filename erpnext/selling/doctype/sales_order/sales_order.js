@@ -433,14 +433,17 @@ frappe.ui.form.on("Sales Order", {
 frappe.ui.form.on("Sales Order Item", {
 	item_code: function(frm,cdt,cdn) {
 		var row = locals[cdt][cdn];
+		console.log(cdt,cdn);
 		if (frm.doc.delivery_date) {
 			row.delivery_date = frm.doc.delivery_date;
 			refresh_field("delivery_date", cdn, "items");
 		} else {
 			frm.script_manager.copy_from_first_row("items", row, ["delivery_date"]);
 		}
+		var item = frappe.get_doc("Item", row.item_code);
+		console.log(item);
 		if (!frm.doc.reserve_stock) {
-			console.log(row,frm);
+
 			row.reserve_stock = frm.doc.reserve_stock;
 			row.set_df_property("reserve_stock", "hidden", 1);
 			refresh_field("reserve_stock", cdn, "items");
