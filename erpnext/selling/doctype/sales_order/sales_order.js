@@ -441,9 +441,7 @@ frappe.ui.form.on("Sales Order Item", {
 		} else {
 			frm.script_manager.copy_from_first_row("items", row, ["delivery_date"]);
 		}
-
 		let item = await frappe.db.get_doc("Item", row.item_code);
-		console.log(frm.fields_dict.items);
 		if (!item.is_stock_item) {
 			frm.fields_dict.items.grid.update_docfield_property(
 						'reserve_stock', 'hidden', 1
