@@ -9,6 +9,7 @@
  "field_order": [
   "item_code",
   "customer_item_code",
+  "is_stock_item",
   "ensure_delivery_based_on_produced_serial_no",
   "reserve_stock",
   "col_break1",
@@ -866,6 +867,7 @@
   {
    "allow_on_submit": 1,
    "default": "1",
+   "depends_on": "eval:doc.is_stock_item",
    "fieldname": "reserve_stock",
    "fieldtype": "Check",
    "label": "Reserve Stock",
@@ -890,12 +892,20 @@
    "label": "Production Plan Qty",
    "no_copy": 1,
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fetch_from": "item_code.is_stock_item",
+   "fieldname": "is_stock_item",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Is Stock Item"
   }
  ],
  "idx": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-11-14 18:37:12.787893",
+ "modified": "2023-11-22 21:06:24.993473",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Sales Order Item",

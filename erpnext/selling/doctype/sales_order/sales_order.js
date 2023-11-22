@@ -441,18 +441,6 @@ frappe.ui.form.on("Sales Order Item", {
 		} else {
 			frm.script_manager.copy_from_first_row("items", row, ["delivery_date"]);
 		}
-		let item = await frappe.db.get_doc("Item", row.item_code);
-		if (!item.is_stock_item) {
-			frm.fields_dict.items.grid.update_docfield_property(
-						'reserve_stock', 'hidden', 1
-			);
-		} else {
-			frm.fields_dict.items.grid.update_docfield_property(
-						'reserve_stock', 'hidden', 0
-			);
-		}
-		refresh_field("reserve_stock", cdn, "items");
-		frm.fields_dict.items.grid.refresh();
 	},
 	delivery_date: function(frm, cdt, cdn) {
 		if(!frm.doc.delivery_date) {
