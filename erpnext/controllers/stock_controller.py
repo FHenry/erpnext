@@ -62,9 +62,12 @@ class StockController(AccountsController):
 			)
 		)
 
+		is_asset_pr = any(d.get("is_fixed_asset") for d in self.get("items"))
+
 		if (
 			cint(erpnext.is_perpetual_inventory_enabled(self.company))
 			or provisional_accounting_for_non_stock_items
+			or is_asset_pr
 		):
 			warehouse_account = get_warehouse_account_map(self.company)
 
@@ -72,12 +75,6 @@ class StockController(AccountsController):
 				if not gl_entries:
 					gl_entries = self.get_gl_entries(warehouse_account)
 				make_gl_entries(gl_entries, from_repost=from_repost)
-
-		elif self.doctype in ["Purchase Receipt", "Purchase Invoice"] and self.docstatus == 1:
-			gl_entries = []
-			gl_entries = self.get_asset_gl_entry(gl_entries)
-			update_regional_gl_entries(gl_entries, self)
-			make_gl_entries(gl_entries, from_repost=from_repost)
 
 	def validate_serialized_batch(self):
 		from erpnext.stock.doctype.serial_no.serial_no import get_serial_nos
@@ -1213,8 +1210,6 @@ def create_item_wise_repost_entries(voucher_type, voucher_no, allow_zero_rate=Fa
 
 		repost_entry = frappe.new_doc("Repost Item Valuation")
 		repost_entry.based_on = "Item and Warehouse"
-		repost_entry.voucher_type = voucher_type
-		repost_entry.voucher_no = voucher_no
 
 		repost_entry.item_code = sle.item_code
 		repost_entry.warehouse = sle.warehouse
@@ -1227,8 +1222,3 @@ def create_item_wise_repost_entries(voucher_type, voucher_no, allow_zero_rate=Fa
 		repost_entries.append(repost_entry)
 
 	return repost_entries
-
-
-@erpnext.allow_regional
-def update_regional_gl_entries(gl_list, doc):
-	return

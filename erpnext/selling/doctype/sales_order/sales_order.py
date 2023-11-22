@@ -218,7 +218,15 @@ class SalesOrder(SellingController):
 
 	def validate_with_previous_doc(self):
 		super(SalesOrder, self).validate_with_previous_doc(
-			{"Quotation": {"ref_dn_field": "prevdoc_docname", "compare_fields": [["company", "="]]}}
+			{
+				"Quotation": {"ref_dn_field": "prevdoc_docname", "compare_fields": [["company", "="]]},
+				"Quotation Item": {
+					"ref_dn_field": "quotation_item",
+					"compare_fields": [["item_code", "="], ["uom", "="], ["conversion_factor", "="]],
+					"is_child_table": True,
+					"allow_duplicate_prev_row_id": True,
+				},
+			}
 		)
 
 		if cint(frappe.db.get_single_value("Selling Settings", "maintain_same_sales_rate")):
@@ -769,8 +777,11 @@ def make_delivery_note(source_name, target_doc=None, kwargs=None):
 		if target.company_address:
 			target.update(get_fetch_values("Delivery Note", "company_address", target.company_address))
 
-		# set target items names to ensure proper linking with packed_items
-		target.set_new_name()
+		# if invoked in bulk creation, validations are ignored and thus this method is nerver invoked
+		if frappe.flags.bulk_transaction:
+			# set target items names to ensure proper linking with packed_items
+			target.set_new_name()
+
 		make_packing_list(target)
 
 	def condition(doc):
