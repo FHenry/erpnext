@@ -94,6 +94,12 @@ frappe.ui.form.on("Sales Order", {
 						frm.set_value("reserve_stock", 0);
 						frm.set_df_property("reserve_stock", "read_only", 1);
 						frm.set_df_property("reserve_stock", "hidden", 1);
+						frm.fields_dict.items.grid.update_docfield_property(
+								'reserve_stock', 'hidden', 1
+						);
+						frm.fields_dict.items.grid.update_docfield_property(
+								'reserve_stock', 'default', 0
+						);
 					}
 				})
 			}
@@ -427,7 +433,7 @@ frappe.ui.form.on("Sales Order", {
 });
 
 frappe.ui.form.on("Sales Order Item", {
-	item_code: function(frm,cdt,cdn) {
+	item_code: async function(frm,cdt,cdn) {
 		var row = locals[cdt][cdn];
 		if (frm.doc.delivery_date) {
 			row.delivery_date = frm.doc.delivery_date;
