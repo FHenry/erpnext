@@ -100,6 +100,9 @@ frappe.ui.form.on("Sales Order", {
 						frm.fields_dict.items.grid.update_docfield_property(
 								'reserve_stock', 'default', 0
 						);
+						frm.fields_dict.items.grid.update_docfield_property(
+								'reserve_stock', 'read_only', 1
+						);
 					}
 				})
 			}
