@@ -444,12 +444,6 @@ frappe.ui.form.on("Sales Order Item", {
 		} else {
 			frm.script_manager.copy_from_first_row("items", row, ["delivery_date"]);
 		}
-		if (frm.get_docfield("reserve_stock").hidden===0) {
-			let item = await frappe.db.get_doc("Item", row.item_code);
-			console.log(item.is_stock_item,frm.fields_dict["items"].grid.grid_rows_by_docname[row.name]);
-			frm.fields_dict["items"].grid.grid_rows_by_docname[row.name].toggle_display("reserve_stock", item.is_stock_item);
-			refresh_field("reserve_stock", cdn, "items");
-		}
 	},
 	delivery_date: function(frm, cdt, cdn) {
 		if(!frm.doc.delivery_date) {
